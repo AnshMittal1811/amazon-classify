@@ -1,4 +1,4 @@
 *.tar
 *.csv
 *.7z
-./train-jpg/*
+train-jpg/
