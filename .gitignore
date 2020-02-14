@@ -3,3 +3,4 @@
 *.7z
 train-jpg/
 .DS_Store
+.ipynb_checkpoints/
