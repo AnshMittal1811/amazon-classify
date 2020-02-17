@@ -1,7 +1,9 @@
 *.tar
 *.csv
 *.7z
+*.npz
 train-jpg/
 .DS_Store
 .python-version
 .ipynb_checkpoints/
+
