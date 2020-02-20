@@ -1,9 +1,11 @@
+*.png
 *.tar
 *.csv
 *.7z
 *.npz
 train-jpg/
+my_logs/
 .DS_Store
 .python-version
 .ipynb_checkpoints/
-
+*.h5
