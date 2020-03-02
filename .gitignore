@@ -9,4 +9,4 @@ my_logs/
 .DS_Store
 .python-version
 .ipynb_checkpoints/
-*.h5
+
