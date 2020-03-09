@@ -27,7 +27,7 @@ There are two steps in our process for preparing the data for modelling. First w
 First clone the repository onto your local machine. The command to do this is given below: 
 
 ```shell
-	git clone https://github.com/sociometrik/planet-rep.git 
+   git clone https://github.com/sociometrik/planet-rep.git 
 ```
 
 This will create a folder called **planet-rep** on your machine with the Jupyter notebook scripts and others.
@@ -145,23 +145,53 @@ First we compress the images to 32 X 32 or any other desired target size and the
 ```
 
 These two functions will output a file to the repository folder	 with format **.npz** which is a Python built-in compressed file format for numerical arrays. The file will be called **planet_data.npz**. Now that this is done we are finally ready to move ahead with training.
-		 
-# How to prepare hardware
 
 # Model evaluation measure
 
-The model evaluation measure is 
+The model evaluation measure used for this competition is a metric called the F-beta score. Coventionally classifiers use 
+		 
+# How to prepare hardware
 
-# Evaluate a base-line model
+We are using a non-GPU Ubuntu 18.04 Node on E2E Cloud for training. Any other cloud service provider should also work after making small adjustments. Amazon Web Services, Digital Ocean, Microsot Azure, and Google Cloud all provide Ubuntu 18.04 servers. You must have .ssh root access to the machine in order to run the steps above. Steps for the E2E setup are given below: 
+	
+   * Start a new node or instance
+   * Use SSH to log in to your newly created instance as the root user
+   * After logging in to your instance run the `setup.sh` file above
+   * The `setup.sh` file will install all the software that is needed to run the model onto the machine automatically
+   * It will also call the `requirements.txt` file and install all the Python packages into the enviromnent that are needed
+   * Once this has run successfully you should be ready to train your model
+
+# Training a base-line model
+
+The model is defined and trained using the `keras` deep learning library. The function which defines the model is called: 
+
+```python
+   def define_model(...)
+	...
+   	return(...)
+```
+
+We have written all our code using a Jupyter notebook. Jupyter notebooks are usually designed to be called automatically and do not take in command line arguments out of the box. This makes it hard to experiment with different parameter settings. To overcome this problem we use a Python package called `papermill`. `papermill` is built on top of Jupyter notebook and allows us to call this notebook like a script. We can use the following command to call the notebook: 
+	
+`papermill planet-rep.ipynb planet-rep-train.ipynb -p epochs 50 -p train True`
+
+This tells `papermill` to run `planet-rep.ipynb` and send all output to `planet-rep-train.ipynb`. It also sets the code to run for 50 epochs and sets the `train` parameter to `True`. When the `train` parameter is set to `True` the file compression parts are skipped. The script directly loads the planet-data.npz file and sends it as an input to the model. 
 
 
 # Improve Model Performance
 
-# How to use transfer learning
+  #### Hyper-parameter optimization
+  
+  #### Data augmentation 
+  
+  #### More hidden layers
+  
+  #### Dropout regularization
+  
+  #### Transfer learning
 
-# Results
 
-# How to finalise the model and make predictions 
+# Finalise the model and make predictions 
 
 
 # Comparison to winner's solution 
