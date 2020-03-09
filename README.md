@@ -106,8 +106,8 @@ Calling this function will result in the following two dictionaries:
 
 Next, we need to relate these functions to the images. For that, we use a function called: 
 ```python
-	def create_file_mapping(mapping_df):
-	...
+   def create_file_mapping(mapping_df):
+   	...
 	return(...)
 ```
 This function returns a third dictionary with keys as image file names and values as a list of all the labels that are given for that picture. An example of the output for the first training image is given below: 
@@ -115,39 +115,36 @@ This function returns a third dictionary with keys as image file names and value
 {'train_0': ['haze', 'primary'], 'train_1': ['agriculture', 'clear', 'primary', 'water']}
 ```
 
-These dictionaries are useful for us not only to know the unique labels in the data-set but also because all supervised machine learning algorithms take only numbers as input and not strings. We need to one-hot encode the information we have. These dictionaries will allow us to do so. The function which does the one-hot encoding for us is given in the code by: 
+These dictionaries are useful for us not only to know the unique labels in the data-set but also because all supervised machine learning algorithms take only numbers as input and not strings. We need to one-hot encode the information we have. These dictionaries will allow us to do so. The function which does the one-hot encoding for us is given in the code below. A sample function call with sample output is also given : 
 
 ```python
    def one_hot_encode(tags, labels_map):
 	   ...
 	   return(...)
+   
+   print(one_hot_encode(['agriculture', 'clear', 'primary', 'water'], labels_map))
+   
+   [1 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 1]
 ```
-A sample function call with sample output is given below. 
-```python
-print(one_hot_encode(['agriculture', 'clear', 'primary', 'water'], labels_map))
 
-[1 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 1]
-```
-How does the function know where to put 1s and 0s? Agriculture is one of the labels. The integer for agriculture according to our previous mapping dictionary is 0. So the 0th element of the list above is given a 1 value by the one-hot encoding. The value of clear is 5 according to our label to integer dictionary. So the value at index 5 of the list above is given a 1. Now we are ready to compress the data-set and store it for training.
+How does the function know where to put 1s and 0s? Agriculture is one of the labels. The integer for agriculture according to our previous mapping dictionary is 0. So the 0th element of the list above is given a 1 value by the one-hot encoding. The value of clear is 5 according to our label to integer dictionary. So the value at index 5 of the list above is given a 1, and so on. Now we are ready to compress the data-set and store it.
 
 #### Images 
 
 First we compress the images to 32 X 32 or any other desired target size and then convert these to a numerical array. We need to compress the images if we are running this without a GPU regardless of whether they are on our local machine or on a cloud server. This is to keep the training time manageable as this is just a test case for us to learn the data processing pipeline for satellite imagery. The functions which do this in the code are: 
 
 ```python 
-		def compress_dataset(path, file_mapping, tag_mapping, 
-							 target_size = (128, 128)):
-			...	
-			return(X, y)
+   def compress_dataset(path, file_mapping, tag_mapping, target_size = (128, 128)):
+	...	
+	return(X, y)
 
-		def prep_data(folder = 'train-jpg/', 
-					  target_size = (32, 32)):
-			...
-			np.savez_compressed('planet_data.npz', X, y)
-			return(...)
+   def prep_data(folder = 'train-jpg/', target_size = (32, 32)):
+	...
+	np.savez_compressed('planet_data.npz', X, y)
+	return(...)
 ```
 
-These two function will output a file to the repository folder	 with format **.npz** which is a Python built-in compressed file format for numerical arrays. The file will be called **planet_data.npz**. Now that this is done we are finally ready to move ahead with training.
+These two functions will output a file to the repository folder	 with format **.npz** which is a Python built-in compressed file format for numerical arrays. The file will be called **planet_data.npz**. Now that this is done we are finally ready to move ahead with training.
 		 
 # How to prepare hardware
 
