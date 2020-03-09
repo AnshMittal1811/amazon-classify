@@ -183,7 +183,7 @@ The model evaluation measure used for this competition is a metric called the F-
 ```
 
 
-The first set of lines calculates the precision and the recall. ``python bb`` is just a weighting function. The final set of lines puts everything together and returns the calculated score. This is tracked throughout training.
+The first set of lines calculates the precision and the recall. ``bb`` is just a weighting function. The final set of lines puts everything together and returns the calculated score. This is tracked throughout training.
 
 # How to prepare hardware
 
