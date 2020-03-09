@@ -148,8 +148,43 @@ These two functions will output a file to the repository folder	 with format **.
 
 # Model evaluation measure
 
-The model evaluation measure used for this competition is a metric called the F-beta score. Coventionally classifiers use 
-		 
+The model evaluation measure used for this competition is a metric called the F-beta score. Coventionally classifiers use either precision or recall as evaluation metrics. There are many ways to combine these metrics. One common way is to plot the area under the the receiver operating characteristic (ROC) curve which graphs false negatives on the X-axis versus true positives on the Y-axis. This competition uses another combined metric called the F-beta score. This is a weighted average of precision and recall. The entire function is given below. We had to code it manually as Keras does not support this function.
+
+```python
+   # Calculate fbeta score for multi-class/label classification
+   def fbeta(y_true, y_pred, beta=2):
+
+    	# Clip predictions
+    	y_pred = keras.backend.clip(y_pred, 0, 1)
+    	
+	# Calculate true positives
+    	tp = keras.backend.sum(keras.backend.round(keras.backend.clip(y_true * y_pred, 0, 1)), axis=1)
+    	
+	# Calculate false positives
+    	fp = keras.backend.sum(keras.backend.round(keras.backend.clip(y_pred - y_true, 0, 1)), axis=1)
+    	
+	# Calculate false negatives
+    	fn = keras.backend.sum(keras.backend.round(keras.backend.clip(y_true - y_pred, 0, 1)), axis=1)
+    	
+	# Calculate precision
+    	p = tp / (tp + fp + keras.backend.epsilon())
+    	
+	# Calculate recall
+    	r = tp / (tp + fn + keras.backend.epsilon())
+    	
+	# Calculate fbeta, averaged across each class
+    	bb = beta ** 2
+    	
+	# F-beta score final calculation
+    	fbeta_score = keras.backend.mean((1 + bb) * (p * r) / (bb * p + r + keras.backend.epsilon()))
+    	
+	# Return statement
+    	return(fbeta_score)
+```
+
+
+The first set of lines calculates the precision and the recall. ``python bb`` is just a weighting function. The final set of lines puts everything together and returns the calculated score. This is tracked throughout training.
+
 # How to prepare hardware
 
 We are using a non-GPU Ubuntu 18.04 Node on E2E Cloud for training. Any other cloud service provider should also work after making small adjustments. Amazon Web Services, Digital Ocean, Microsot Azure, and Google Cloud all provide Ubuntu 18.04 servers. You must have .ssh root access to the machine in order to run the steps above. Steps for the E2E setup are given below: 
