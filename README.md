@@ -140,10 +140,11 @@ First we compress the images to 32 X 32 or any other desired target size and the
 			...	
 			return(X, y)
 
-def prep_data(folder = 'train-jpg/', target_size = (32, 32)):
-	...
-	np.savez_compressed('planet_data.npz', X, y)
-	return(...)
+		def prep_data(folder = 'train-jpg/', 
+					  target_size = (32, 32)):
+			...
+			np.savez_compressed('planet_data.npz', X, y)
+			return(...)
 ```
 
 These two function will output a file to the repository folder	 with format **.npz** which is a Python built-in compressed file format for numerical arrays. The file will be called **planet_data.npz**. Now that this is done we are finally ready to move ahead with training.
