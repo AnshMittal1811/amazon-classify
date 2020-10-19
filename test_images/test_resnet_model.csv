@@ -1,0 +1,11 @@
+Images,Predictions
+Image0,"['clear', 'habitation', 'primary', 'road']"
+Image1,"['primary', 'road']"
+Image2,"['agriculture', 'primary', 'road']"
+Image3,"['agriculture', 'primary']"
+Image4,"['agriculture', 'primary', 'road']"
+Image5,['primary']
+Image6,['primary']
+Image7,"['clear', 'primary']"
+Image8,['primary']
+Image9,['primary']

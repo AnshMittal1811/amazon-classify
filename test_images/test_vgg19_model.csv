@@ -1,0 +1,11 @@
+Images,Predictions
+Image0,"['artisinal_mine', 'clear', 'cultivation', 'primary', 'water']"
+Image1,"['artisinal_mine', 'primary', 'road']"
+Image2,"['clear', 'cultivation', 'primary', 'selective_logging', 'water']"
+Image3,"['agriculture', 'artisinal_mine', 'clear', 'primary']"
+Image4,"['clear', 'primary', 'selective_logging', 'water']"
+Image5,['clear']
+Image6,"['agriculture', 'clear', 'conventional_mine', 'cultivation', 'primary', 'road', 'water']"
+Image7,"['clear', 'cultivation', 'primary']"
+Image8,['cloudy']
+Image9,"['partly_cloudy', 'primary']"

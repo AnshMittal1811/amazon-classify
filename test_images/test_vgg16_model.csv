@@ -1,0 +1,11 @@
+Images,Predictions
+Image0,"['artisinal_mine', 'bare_ground', 'clear', 'cultivation', 'habitation', 'primary', 'road']"
+Image1,"['artisinal_mine', 'clear', 'habitation', 'primary', 'road', 'water']"
+Image2,"['artisinal_mine', 'bare_ground', 'clear', 'habitation', 'primary', 'road']"
+Image3,"['agriculture', 'clear', 'habitation', 'primary', 'road', 'water']"
+Image4,"['clear', 'primary', 'road', 'water']"
+Image5,['cloudy']
+Image6,"['artisinal_mine', 'clear', 'conventional_mine', 'cultivation', 'primary', 'road', 'water']"
+Image7,"['artisinal_mine', 'clear', 'primary']"
+Image8,"['clear', 'primary', 'road']"
+Image9,"['clear', 'cloudy']"

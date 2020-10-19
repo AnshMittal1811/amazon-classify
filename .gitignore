@@ -1,7 +1,5 @@
 *.out
-*.png
 *.tar
-*.csv
 *.7z
 *.npz
 my_logs/
